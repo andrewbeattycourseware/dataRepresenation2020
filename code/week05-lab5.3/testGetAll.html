@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>
+            test get all
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        
+    </head>
+    <body>
+       <button onclick="callGetAll()">go</button>
+        <table class="table" id="carTable">
+            <tr>
+                <th>Reg</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Price</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+
+        </table>
+
+    </body>
+    <script>
+        function callGetAll(){
+            //console.log("function called")
+            $.ajax({
+                url:"http://127.0.0.1:5000/cars",
+                data:"",
+                dataType:"JSON",
+                method:"GET",
+                success:function(result){
+                    console.log(result)
+                    for (car of result.cars){
+                        addCarToTable(car)
+                    } 
+                },
+                error:function(xhr,status, msg){
+                    console.log("error "+msg + "code is:"+status)
+                }
+
+            }
+            )
+        }
+        function addCarToTable(car) {
+                console.log(car)
+                var tableElement = document.getElementById('carTable')
+                var rowElement = tableElement.insertRow(-1)
+                rowElement.setAttribute('id', car.reg)
+                var cell1 = rowElement.insertCell(0);
+                cell1.innerHTML = car.reg
+                //console.log(car.reg)
+                var cell2 = rowElement.insertCell(1);
+                cell2.innerHTML = car.make
+                var cell3 = rowElement.insertCell(2);
+                cell3.innerHTML = car.model
+                var cell4 = rowElement.insertCell(3);
+                cell4.innerHTML = car.price
+                var cell5 = rowElement.insertCell(4);
+                cell5.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
+                var cell6 = rowElement.insertCell(5);
+                cell6.innerHTML = '<button onclick=doDelete(this)>delete</button>'
+
+            }
+    </script>
+</html>

@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>
+        test Update
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <button onclick="callUpdate()">Test Update</button>
+
+
+</body>
+<script>
+    function callUpdate() {
+        var reg = "12 G 1234"
+        var car = {  price: 14000 }
+        //console.log("function called")
+        $.ajax({
+            url: "http://127.0.0.1:5000/cars/"+encodeURI(reg),
+            data: JSON.stringify(car),
+            dataType: "JSON",
+            method: "PUT",
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                console.log(result)
+
+            },
+            error: function (xhr, status, msg) {
+                console.log("error " + msg + "code is:" + status)
+            }
+
+        }
+        )
+    }
+
+</script>
+
+</html>
