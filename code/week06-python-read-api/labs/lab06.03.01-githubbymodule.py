@@ -6,7 +6,7 @@ import requests
 # remove the minus sign from the key
 # you can add this to your code just don't commit it
 # or use an API key to your own repo
-g = Github("1ad149b82e90e57cb1fce60d0ea587192bcd11de")
+g = Github("7aa146eafee094d3a7b1e81aa1d8fcb0eec8b91-0")
 
 #for repo in g.get_user().get_repos():
 #    print(repo.name)
