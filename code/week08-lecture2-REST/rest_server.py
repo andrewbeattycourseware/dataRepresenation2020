@@ -63,6 +63,7 @@ def update(id):
     return jsonify(currentBook)
 
 #delete
+# curl -X DELETE http://127.0.0.1:5000/books/1
 @app.route('/books/<int:id>', methods=['DELETE'])
 def delete(id):
     foundBooks = list(filter(lambda t: t["id"] == id, books))
